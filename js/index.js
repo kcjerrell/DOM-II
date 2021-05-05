@@ -1,8 +1,15 @@
-// hooking the event listeners for Sign Me Up!
-const signUpButtons = Array.from(document.querySelectorAll('.destination .btn'));
-signUpButtons.forEach(btn => {
-	btn.addEventListener('click', signUpClick);
-})
+document.addEventListener('scroll', updateBg);
+updateBg();
+
+function updateBg(event) {
+		const html = document.querySelector('html');
+		const x = html.scrollTop / html.clientHeight;
+		const r = 230 + x * 15;
+		const g = 245 - x * 15;
+		const b = 240;
+
+		document.querySelector('body').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
 
 // image swap on double-click
 const images = document.querySelectorAll(".img-content img");
@@ -15,6 +22,12 @@ function swapImages(event) {
 	images[0].src = images[1].src;
 	images[1].src = swap;
 }
+
+// hooking the event listeners for Sign Me Up!
+const signUpButtons = Array.from(document.querySelectorAll('.destination .btn'));
+signUpButtons.forEach(btn => {
+	btn.addEventListener('click', signUpClick);
+})
 
 // I realize this is a contrived example for propagation, there's better ways to do this
 // And yeah, I stole the modal dialog from today's guided project :)
