@@ -5,13 +5,15 @@ signUpButtons.forEach(btn => {
 })
 
 // image swap on double-click
-const images = document.querySelectorAll("img-content");
+const images = document.querySelectorAll(".img-content img");
 images.forEach((img) => {
 	img.addEventListener('dblclick', swapImages);
 });
 
 function swapImages(event) {
-
+	let swap = images[0].src;
+	images[0].src = images[1].src;
+	images[1].src = swap;
 }
 
 // I realize this is a contrived example for propagation, there's better ways to do this
